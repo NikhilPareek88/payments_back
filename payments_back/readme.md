@@ -21,7 +21,7 @@ This endpoint retrieves all the available clearing costs stored in the system.
 - **200 OK**: Returns a collection of all clearing costs.
 
 #### Example Request:
-```bash
+```
 curl -X GET "http://localhost:8080/payment-card-cost/"
 ````
 
@@ -43,7 +43,7 @@ This endpoint fetches the clearing cost for a specific country based on the card
 - 500 Internal Server Error: If there is any unexpected error.
 
 #### Example Request:
-````bash
+````
 curl -X GET "http://localhost:8080/payment-card-cost/country/US"
 ````
 
@@ -73,7 +73,6 @@ curl -X GET "http://localhost:8080/payment-card-cost/country/US"
    Clone the repository to your local machine:
 
 ```
-
 git clone <repository-url>
 cd <repository-directory>
 ```
@@ -82,23 +81,21 @@ cd <repository-directory>
    You can build the application using Maven:
 
 ```
-
 mvn clean package
 ```
+
 This will generate a jar file in the target/ directory.
 
 ### 3. Run the Application
    You can run the application using:
 
 ```
-
 mvn spring-boot:run
 ```
 
 Alternatively, you can run the application by executing the generated JAR file:
 
-```bash
-
+```
 java -jar target/your-application-name.jar
 ```
 The application will start on http://localhost:8080/payments_back.
@@ -130,7 +127,6 @@ You can test the API by sending valid and invalid requests:
 - **Valid Request Example:**
 
 ```
-
 {
 "card_number": "3712401222"
 }
@@ -139,7 +135,6 @@ You can test the API by sending valid and invalid requests:
 - **Invalid Request Example (Card Number Too Short):**
   
 ```
-
 {
 "card_number": "123"
 }
@@ -148,7 +143,6 @@ You can test the API by sending valid and invalid requests:
 - **Invalid Request Example (Card Number Too Long):**
 
 ```
-
 {
 "card_number": "12345678901234567890123456"
 }
