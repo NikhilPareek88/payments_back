@@ -175,7 +175,7 @@ To run the application locally as dockerimage, pull it from dockerhub.
 ### 1. Pull the docker image:
 
 ```
-docker pull nikhilpareek88/payments-back
+docker pull nikhilpareek88/payments-back:latest
 ```
 
 ### 2. Run the docker container:
