@@ -3,6 +3,9 @@ package com.payments.payments_back.controller;
 
 import com.payments.payments_back.model.ClearingCost;
 import com.payments.payments_back.service.ClearingCostService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -20,6 +23,11 @@ public class ClearingCostController {
         this.clearingCostService = clearingCostService;
     }
 
+    @Operation(summary = "Get Countries & Clearing Cost")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200"),
+            @ApiResponse(responseCode = "500", description = "Internal Server Error")
+    })
     @GetMapping("/")
     public ResponseEntity<Collection<ClearingCost>> clearingCost() {
         try {
@@ -30,6 +38,11 @@ public class ClearingCostController {
         }
     }
 
+    @Operation(summary = "Get Clearing Cost Given on Country")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200"),
+            @ApiResponse(responseCode = "500", description = "Internal Server Error")
+    })
     @GetMapping("/country/{country}")
     public ResponseEntity<ClearingCost> getClearingCost(@PathVariable("country") String country) {
         try {
@@ -41,6 +54,11 @@ public class ClearingCostController {
         }
     }
 
+    @Operation(summary = "Create a new Country & Clearing Cost")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "201"),
+            @ApiResponse(responseCode = "500", description = "Internal Server Error")
+    })
     @PostMapping("/")
     public ResponseEntity<ClearingCost> addClearingCost(@RequestBody ClearingCost clearingCost) {
         try {
@@ -51,6 +69,11 @@ public class ClearingCostController {
         }
     }
 
+    @Operation(summary = "Delete Country & Clearing Cost")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200"),
+            @ApiResponse(responseCode = "500", description = "Internal Server Error")
+    })
     @DeleteMapping("/")
     public ResponseEntity<ClearingCost> removeClearingCost(@RequestBody ClearingCost clearingCost) {
         try {
