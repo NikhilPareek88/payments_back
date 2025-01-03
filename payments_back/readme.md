@@ -73,7 +73,7 @@ curl -X GET "http://localhost:8080/payment-card-cost/country/US"
    Clone the repository to your local machine:
 
 ```
-Copy code
+
 git clone <repository-url>
 cd <repository-directory>
 ```
@@ -82,33 +82,33 @@ cd <repository-directory>
    You can build the application using Maven:
 
 ```
-Copy code
+
 mvn clean package
-This will generate a jar file in the target/ directory.
 ```
+This will generate a jar file in the target/ directory.
 
 ### 3. Run the Application
    You can run the application using:
 
 ```
-Copy code
+
 mvn spring-boot:run
 ```
 
 Alternatively, you can run the application by executing the generated JAR file:
 
 ```bash
-Copy code
+
 java -jar target/your-application-name.jar
 ```
-The application will start on http://localhost:8080.
+The application will start on http://localhost:8080/payments_back.
 
 ----------------------------
 
 ## API Documentation (Swagger UI)
 Swagger UI will be available once the application is running:
 
-**URL:** http://localhost:8080/swagger-ui.html
+**URL:** http://localhost:8080/payments_back/swagger-ui.html
 
 Here, you can interact with the API by sending requests and viewing the responses.
 
@@ -130,16 +130,16 @@ You can test the API by sending valid and invalid requests:
 - **Valid Request Example:**
 
 ```
-Copy code
+
 {
-"card_number": "1234567890"
+"card_number": "3712401222"
 }
 ```
 
 - **Invalid Request Example (Card Number Too Short):**
   
 ```
-Copy code
+
 {
 "card_number": "123"
 }
@@ -148,7 +148,7 @@ Copy code
 - **Invalid Request Example (Card Number Too Long):**
 
 ```
-Copy code
+
 {
 "card_number": "12345678901234567890123456"
 }
