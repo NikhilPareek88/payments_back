@@ -1,0 +1,235 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Clearing Cost APIs",
+    "description": "API Documentation for Clearing Cost Application",
+    "version": "1.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8080/payments_back",
+      "description": "Generated server url"
+    }
+  ],
+  "paths": {
+    "/payment-cards-cost/": {
+      "post": {
+        "tags": [
+          "card-cost-controller"
+        ],
+        "summary": "Clearing cost based on Card number",
+        "operationId": "getCardCost",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CardRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CardCostResponse"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "It will return the clearing cost for the provided card number",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CardCostResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request for card number",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CardCostResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "IIN doesn't found in BinList Lookup",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CardCostResponse"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "BinList response for too many requests",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CardCostResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/clearing-cost/": {
+      "get": {
+        "tags": [
+          "clearing-cost-controller"
+        ],
+        "operationId": "clearingCost",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ClearingCost"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "clearing-cost-controller"
+        ],
+        "operationId": "addClearingCost",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ClearingCost"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClearingCost"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "clearing-cost-controller"
+        ],
+        "operationId": "removeClearingCost",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ClearingCost"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClearingCost"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/clearing-cost/country/{country}": {
+      "get": {
+        "tags": [
+          "clearing-cost-controller"
+        ],
+        "operationId": "getClearingCost",
+        "parameters": [
+          {
+            "name": "country",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClearingCost"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "CardRequest": {
+        "required": [
+          "card_number"
+        ],
+        "type": "object",
+        "properties": {
+          "card_number": {
+            "maxLength": 19,
+            "minLength": 8,
+            "type": "string"
+          }
+        }
+      },
+      "CardCostResponse": {
+        "type": "object",
+        "properties": {
+          "country": {
+            "type": "string"
+          },
+          "cost": {
+            "type": "number"
+          }
+        }
+      },
+      "ClearingCost": {
+        "type": "object",
+        "properties": {
+          "country": {
+            "type": "string"
+          },
+          "cost": {
+            "type": "number"
+          }
+        }
+      }
+    }
+  }
+}
