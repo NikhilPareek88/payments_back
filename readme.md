@@ -29,8 +29,8 @@ This is a Spring Boot-based API that provides the clearing cost of a payment car
    Clone the repository to your local machine:
 
 ```
-git clone <repository-url>
-cd <repository-directory>
+git clone git@github.com:NikhilPareek88/payments_back.git
+cd payments_back
 ```
 
 ### 2. Build the Application
@@ -84,13 +84,8 @@ This will run the application inside a Docker container, accessible on http://lo
 ## Pull Docker Image from DockerHub 
 To run the application locally as dockerimage, pull it from dockerhub.
 
-### 1. Pull the docker image:
-
-```
-docker pull nikhilpareek88/payments-back:latest
-```
-
-### 2. Run the docker container:
+### 1. Run the docker container:
+It will pull the images if locally not found.
 
 ```
 docker run -p 8080:8080 nikhilpareek88/payments-back:latest
@@ -98,7 +93,7 @@ docker run -p 8080:8080 nikhilpareek88/payments-back:latest
 
 One spring application started, follow further:
 
-### 3. Use Swagger UI page to try the APIs locally:
+### 2. Use Swagger UI page to try the APIs locally:
 
 ```
 http://localhost:8080/payments_back/swagger-ui/index.html
@@ -110,7 +105,7 @@ http://localhost:8080/payments_back/swagger-ui/index.html
 ## Future Enhancements
 - **Authentication:** Add authentication mechanisms like OAuth2 or Basic Authentication.
 - **Cache Integration:** Use External Cache (Redis or Memcache) to store and retrieve clearing costs rather in-memory cache.
-- **Unit Tests:** Add comprehensive unit tests for the controller and service layers.
+- **Unit Tests:** Increase the test coverage by including left overs.
 
 ----------------------------
 
